@@ -1,0 +1,49 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[portuguese]{babel}
+\usepackage{parskip}
+\usepackage[normalem]{ulem}
+
+\begin{document}
+
+\section*{Modelo Lógico — Praestitia CRM}
+
+Chave primária sublinhada. Chave estrangeira marcada com asterisco.
+
+\bigskip
+
+\textbf{Permissao}(\uline{id})
+
+\textbf{Grupo}(\uline{id}, nome)
+
+\textbf{Grupo\_Permissao}(\uline{*grupo\_id}, \uline{*permissao\_id})
+
+\textbf{Usuario}(\uline{id}, nome, *grupo\_id)
+
+\textbf{Endereco}(\uline{id}, cep, numero, logradouro, bairro, cidade, estado)
+
+\textbf{Lead}(\uline{id}, *usuario\_id, *endereco\_id, nome, email, telefone, origem, observacoes)
+
+\textbf{Cliente}(\uline{id}, *usuario\_id, *endereco\_id, nome, email, telefone, status, data\_cadastro, observacoes)
+
+\textbf{Concorrente}(\uline{id}, *usuario\_id, *endereco\_id, nome, email, site, cnpj, data\_cadastro)
+
+\bigskip
+
+\textbf{Chaves estrangeiras:}
+
+\begin{itemize}
+    \item \textbf{Grupo\_Permissao.grupo\_id referencia Grupo(id).} Um grupo pode ter várias permissões e uma permissão pode estar em vários grupos ao mesmo tempo, o que torna a relação N:N. Como nenhum dos dois lados consegue guardar essa informação sozinho, a solução é uma tabela intermediária que registra cada combinação.
+    \item \textbf{Grupo\_Permissao.permissao\_id referencia Permissao(id).} Pelo mesmo motivo, a permissão também precisa estar representada na tabela intermediária.
+    \item \textbf{Usuario.grupo\_id referencia Grupo(id).} Um usuário pertence a um grupo, mas um grupo pode ter vários usuários. A chave fica em Usuario porque é o lado que se repete na relação.
+    \item \textbf{Lead.usuario\_id referencia Usuario(id).} Um usuário pode cadastrar vários leads, mas cada lead pertence a um único usuário. A chave fica em Lead porque é o lado que se repete.
+    \item \textbf{Lead.endereco\_id referencia Endereco(id).} Pessoas do mesmo domicílio, como cônjuges, podem ser cadastradas como leads distintos mas compartilham o mesmo endereço. A chave fica em Lead para que o endereço não precise ser duplicado.
+    \item \textbf{Cliente.usuario\_id referencia Usuario(id).} Um usuário gerencia vários clientes, mas cada cliente foi cadastrado por um único usuário. A chave fica em Cliente pelo mesmo motivo do Lead.
+    \item \textbf{Cliente.endereco\_id referencia Endereco(id).} Clientes no mesmo endereço reaproveitam o mesmo registro. A chave fica em Cliente pelo mesmo motivo do Lead.
+    \item \textbf{Concorrente.usuario\_id referencia Usuario(id).} Um usuário pode monitorar vários concorrentes. A chave fica em Concorrente pelo mesmo motivo dos casos anteriores.
+    \item \textbf{Concorrente.endereco\_id referencia Endereco(id).} Empresas concorrentes podem estar no mesmo endereço, como num edifício comercial. A chave fica em Concorrente pelo mesmo motivo do Lead e do Cliente.
+\end{itemize}
+
+\end{document}
