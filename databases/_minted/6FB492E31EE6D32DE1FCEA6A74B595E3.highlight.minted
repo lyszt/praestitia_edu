@@ -1,0 +1,55 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{CREATE}\PYG{+w}{ }\PYG{k}{TABLE}\PYG{+w}{ }\PYG{n}{lead}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{    }\PYG{n}{id}\PYG{+w}{                  }\PYG{n+nb}{SERIAL}\PYG{+w}{       }\PYG{k}{PRIMARY}\PYG{+w}{ }\PYG{k}{KEY}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{usuario\PYGZus{}id}\PYG{+w}{          }\PYG{n+nb}{BIGINT}\PYG{+w}{       }\PYG{k}{REFERENCES}\PYG{+w}{ }\PYG{n}{usuario}\PYG{p}{(}\PYG{n}{id}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{k}{DELETE}\PYG{+w}{ }\PYG{k}{CASCADE}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{endereco\PYGZus{}id}\PYG{+w}{         }\PYG{n+nb}{INTEGER}\PYG{+w}{      }\PYG{k}{REFERENCES}\PYG{+w}{ }\PYG{n}{endereco}\PYG{p}{(}\PYG{n}{id}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{k}{DELETE}\PYG{+w}{ }\PYG{k}{SET}\PYG{+w}{ }\PYG{k}{NULL}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{nome}\PYG{+w}{                }\PYG{n+nb}{VARCHAR}\PYG{p}{(}\PYG{l+m+mi}{200}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{NULL}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{email}\PYG{+w}{               }\PYG{n+nb}{VARCHAR}\PYG{p}{(}\PYG{l+m+mi}{254}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{NULL}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{telefone}\PYG{+w}{            }\PYG{n+nb}{VARCHAR}\PYG{p}{(}\PYG{l+m+mi}{20}\PYG{p}{),}
+\PYG{+w}{    }\PYG{n}{empresa}\PYG{+w}{             }\PYG{n+nb}{VARCHAR}\PYG{p}{(}\PYG{l+m+mi}{200}\PYG{p}{),}
+\PYG{+w}{    }\PYG{n}{cargo}\PYG{+w}{               }\PYG{n+nb}{VARCHAR}\PYG{p}{(}\PYG{l+m+mi}{100}\PYG{p}{),}
+\PYG{+w}{    }\PYG{n}{origem}\PYG{+w}{              }\PYG{n+nb}{VARCHAR}\PYG{p}{(}\PYG{l+m+mi}{20}\PYG{p}{)}\PYG{+w}{  }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{NULL}\PYG{+w}{ }\PYG{k}{DEFAULT}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}site\PYGZsq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{interesse}\PYG{+w}{           }\PYG{n+nb}{VARCHAR}\PYG{p}{(}\PYG{l+m+mi}{200}\PYG{p}{),}
+\PYG{+w}{    }\PYG{n}{status}\PYG{+w}{              }\PYG{n+nb}{VARCHAR}\PYG{p}{(}\PYG{l+m+mi}{20}\PYG{p}{)}\PYG{+w}{  }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{NULL}\PYG{+w}{ }\PYG{k}{DEFAULT}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}novo\PYGZsq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{pontuacao}\PYG{+w}{           }\PYG{n+nb}{INTEGER}\PYG{+w}{      }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{NULL}\PYG{+w}{ }\PYG{k}{DEFAULT}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{observacoes}\PYG{+w}{         }\PYG{n+nb}{TEXT}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{data\PYGZus{}cadastro}\PYG{+w}{       }\PYG{n}{TIMESTAMPTZ}\PYG{+w}{  }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{NULL}\PYG{+w}{ }\PYG{k}{DEFAULT}\PYG{+w}{ }\PYG{n}{NOW}\PYG{p}{(),}
+\PYG{+w}{    }\PYG{n}{data\PYGZus{}ultimo\PYGZus{}contato}\PYG{+w}{ }\PYG{n}{TIMESTAMPTZ}\PYG{p}{,}
+
+\PYG{+w}{    }\PYG{k}{CONSTRAINT}\PYG{+w}{ }\PYG{n}{lead\PYGZus{}status\PYGZus{}check}\PYG{+w}{ }\PYG{k}{CHECK}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{        }\PYG{n}{status}\PYG{+w}{ }\PYG{k}{IN}\PYG{+w}{ }\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}novo\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}contatado\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}qualificado\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}em\PYGZus{}negociacao\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}convertido\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}perdido\PYGZsq{}}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{),}
+\PYG{+w}{    }\PYG{k}{CONSTRAINT}\PYG{+w}{ }\PYG{n}{lead\PYGZus{}origem\PYGZus{}check}\PYG{+w}{ }\PYG{k}{CHECK}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{        }\PYG{n}{origem}\PYG{+w}{ }\PYG{k}{IN}\PYG{+w}{ }\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}site\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}indicacao\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}redes\PYGZus{}sociais\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}email\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}telefone\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}evento\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}outro\PYGZsq{}}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{)}
+\PYG{p}{);}
+
+\PYG{k}{CREATE}\PYG{+w}{ }\PYG{k}{TABLE}\PYG{+w}{ }\PYG{n}{cliente}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{    }\PYG{n}{id}\PYG{+w}{             }\PYG{n+nb}{SERIAL}\PYG{+w}{       }\PYG{k}{PRIMARY}\PYG{+w}{ }\PYG{k}{KEY}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{usuario\PYGZus{}id}\PYG{+w}{     }\PYG{n+nb}{BIGINT}\PYG{+w}{       }\PYG{k}{REFERENCES}\PYG{+w}{ }\PYG{n}{usuario}\PYG{p}{(}\PYG{n}{id}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{k}{DELETE}\PYG{+w}{ }\PYG{k}{CASCADE}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{endereco\PYGZus{}id}\PYG{+w}{    }\PYG{n+nb}{INTEGER}\PYG{+w}{      }\PYG{k}{REFERENCES}\PYG{+w}{ }\PYG{n}{endereco}\PYG{p}{(}\PYG{n}{id}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{k}{DELETE}\PYG{+w}{ }\PYG{k}{SET}\PYG{+w}{ }\PYG{k}{NULL}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{nome}\PYG{+w}{           }\PYG{n+nb}{VARCHAR}\PYG{p}{(}\PYG{l+m+mi}{200}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{NULL}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{email}\PYG{+w}{          }\PYG{n+nb}{VARCHAR}\PYG{p}{(}\PYG{l+m+mi}{254}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{NULL}\PYG{+w}{ }\PYG{k}{UNIQUE}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{telefone}\PYG{+w}{       }\PYG{n+nb}{VARCHAR}\PYG{p}{(}\PYG{l+m+mi}{20}\PYG{p}{),}
+\PYG{+w}{    }\PYG{n}{empresa}\PYG{+w}{        }\PYG{n+nb}{VARCHAR}\PYG{p}{(}\PYG{l+m+mi}{200}\PYG{p}{),}
+\PYG{+w}{    }\PYG{n}{cnpj\PYGZus{}cpf}\PYG{+w}{       }\PYG{n+nb}{VARCHAR}\PYG{p}{(}\PYG{l+m+mi}{18}\PYG{p}{),}
+\PYG{+w}{    }\PYG{n}{status}\PYG{+w}{         }\PYG{n+nb}{VARCHAR}\PYG{p}{(}\PYG{l+m+mi}{20}\PYG{p}{)}\PYG{+w}{  }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{NULL}\PYG{+w}{ }\PYG{k}{DEFAULT}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}ativo\PYGZsq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{data\PYGZus{}cadastro}\PYG{+w}{  }\PYG{n}{TIMESTAMPTZ}\PYG{+w}{  }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{NULL}\PYG{+w}{ }\PYG{k}{DEFAULT}\PYG{+w}{ }\PYG{n}{NOW}\PYG{p}{(),}
+\PYG{+w}{    }\PYG{n}{observacoes}\PYG{+w}{    }\PYG{n+nb}{TEXT}\PYG{p}{,}
+
+\PYG{+w}{    }\PYG{k}{CONSTRAINT}\PYG{+w}{ }\PYG{n}{cliente\PYGZus{}status\PYGZus{}check}\PYG{+w}{ }\PYG{k}{CHECK}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{        }\PYG{n}{status}\PYG{+w}{ }\PYG{k}{IN}\PYG{+w}{ }\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}ativo\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}inativo\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}pendente\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}suspenso\PYGZsq{}}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{)}
+\PYG{p}{);}
+
+\PYG{k}{CREATE}\PYG{+w}{ }\PYG{k}{TABLE}\PYG{+w}{ }\PYG{n}{concorrente}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{    }\PYG{n}{id}\PYG{+w}{             }\PYG{n+nb}{SERIAL}\PYG{+w}{       }\PYG{k}{PRIMARY}\PYG{+w}{ }\PYG{k}{KEY}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{usuario\PYGZus{}id}\PYG{+w}{     }\PYG{n+nb}{BIGINT}\PYG{+w}{       }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{NULL}\PYG{+w}{ }\PYG{k}{REFERENCES}\PYG{+w}{ }\PYG{n}{usuario}\PYG{p}{(}\PYG{n}{id}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{k}{DELETE}\PYG{+w}{ }\PYG{k}{CASCADE}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{endereco\PYGZus{}id}\PYG{+w}{    }\PYG{n+nb}{INTEGER}\PYG{+w}{      }\PYG{k}{REFERENCES}\PYG{+w}{ }\PYG{n}{endereco}\PYG{p}{(}\PYG{n}{id}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{k}{DELETE}\PYG{+w}{ }\PYG{k}{SET}\PYG{+w}{ }\PYG{k}{NULL}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{nome}\PYG{+w}{           }\PYG{n+nb}{VARCHAR}\PYG{p}{(}\PYG{l+m+mi}{200}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{NULL}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{email}\PYG{+w}{          }\PYG{n+nb}{VARCHAR}\PYG{p}{(}\PYG{l+m+mi}{254}\PYG{p}{),}
+\PYG{+w}{    }\PYG{n}{site}\PYG{+w}{           }\PYG{n+nb}{VARCHAR}\PYG{p}{(}\PYG{l+m+mi}{200}\PYG{p}{),}
+\PYG{+w}{    }\PYG{n}{cnpj}\PYG{+w}{           }\PYG{n+nb}{VARCHAR}\PYG{p}{(}\PYG{l+m+mi}{18}\PYG{p}{),}
+\PYG{+w}{    }\PYG{n}{data\PYGZus{}cadastro}\PYG{+w}{  }\PYG{n}{TIMESTAMPTZ}\PYG{+w}{  }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{NULL}\PYG{+w}{ }\PYG{k}{DEFAULT}\PYG{+w}{ }\PYG{n}{NOW}\PYG{p}{()}
+\PYG{p}{);}
+\end{MintedVerbatim}

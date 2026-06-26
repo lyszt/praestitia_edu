@@ -1,0 +1,9 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{SELECT}
+\PYG{+w}{    }\PYG{n}{status}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{COUNT}\PYG{p}{(}\PYG{o}{*}\PYG{p}{)}\PYG{+w}{                                              }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{total}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{ROUND}\PYG{p}{(}\PYG{k}{COUNT}\PYG{p}{(}\PYG{o}{*}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{l+m+mi}{100}\PYG{p}{.}\PYG{l+m+mi}{0}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{k}{SUM}\PYG{p}{(}\PYG{k}{COUNT}\PYG{p}{(}\PYG{o}{*}\PYG{p}{))}\PYG{+w}{ }\PYG{n}{OVER}\PYG{+w}{ }\PYG{p}{(),}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{+w}{    }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{percentual}
+\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{cliente}
+\PYG{k}{GROUP}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{status}
+\PYG{k}{ORDER}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{total}\PYG{+w}{ }\PYG{k}{DESC}\PYG{p}{;}
+\end{MintedVerbatim}

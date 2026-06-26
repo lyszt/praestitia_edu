@@ -1,0 +1,9 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{SELECT}
+\PYG{+w}{    }\PYG{n}{l}\PYG{p}{.}\PYG{n}{nome}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{l}\PYG{p}{.}\PYG{n}{email}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{l}\PYG{p}{.}\PYG{n}{origem}
+\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{lead}\PYG{+w}{ }\PYG{n}{l}
+\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{l}\PYG{p}{.}\PYG{n}{email}\PYG{+w}{ }\PYG{k}{IN}\PYG{+w}{ }\PYG{p}{(}\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{email}\PYG{+w}{ }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{cliente}\PYG{p}{)}
+\PYG{k}{ORDER}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{l}\PYG{p}{.}\PYG{n}{nome}\PYG{p}{;}
+\end{MintedVerbatim}

@@ -1,0 +1,9 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{SELECT}
+\PYG{+w}{    }\PYG{n}{status}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{COUNT}\PYG{p}{(}\PYG{o}{*}\PYG{p}{)}\PYG{+w}{              }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{total}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{ROUND}\PYG{p}{(}\PYG{k}{AVG}\PYG{p}{(}\PYG{n}{pontuacao}\PYG{p}{))}\PYG{+w}{ }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{pontuacao\PYGZus{}media}
+\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{lead}
+\PYG{k}{GROUP}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{status}
+\PYG{k}{ORDER}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{total}\PYG{+w}{ }\PYG{k}{DESC}\PYG{p}{;}
+\end{MintedVerbatim}

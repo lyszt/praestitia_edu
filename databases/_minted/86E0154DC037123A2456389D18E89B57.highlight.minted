@@ -1,0 +1,11 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{SELECT}
+\PYG{+w}{    }\PYG{n}{l}\PYG{p}{.}\PYG{n}{id}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{l}\PYG{p}{.}\PYG{n}{nome}\PYG{+w}{       }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{lead\PYGZus{}nome}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{l}\PYG{p}{.}\PYG{n}{email}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{l}\PYG{p}{.}\PYG{n}{origem}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{u}\PYG{p}{.}\PYG{n}{nome}\PYG{+w}{       }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{responsavel}
+\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{lead}\PYG{+w}{ }\PYG{n}{l}
+\PYG{k}{JOIN}\PYG{+w}{ }\PYG{n}{usuario}\PYG{+w}{ }\PYG{n}{u}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{l}\PYG{p}{.}\PYG{n}{usuario\PYGZus{}id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{.}\PYG{n}{id}
+\PYG{k}{ORDER}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{l}\PYG{p}{.}\PYG{n}{id}\PYG{+w}{ }\PYG{k}{DESC}\PYG{p}{;}
+\end{MintedVerbatim}

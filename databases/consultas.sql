@@ -62,3 +62,71 @@ FROM concorrente c
 JOIN endereco e  ON e.id = c.endereco_id
 JOIN usuario u   ON u.id = c.usuario_id
 ORDER BY c.nome;
+
+/* Atualização do status de um lead */
+UPDATE lead
+SET status = 'contatado'
+WHERE nome = 'Data' AND status = 'novo';
+
+/* Remoção de leads perdidos */
+DELETE FROM lead
+WHERE status = 'perdido';
+
+/* Funil de vendas: leads agrupados por etapa */
+SELECT
+    status,
+    COUNT(*)              AS total,
+    ROUND(AVG(pontuacao)) AS pontuacao_media
+FROM lead
+GROUP BY status
+ORDER BY total DESC;
+
+/* Leads com pontuação acima da média geral */
+SELECT
+    l.nome,
+    l.empresa,
+    l.status,
+    l.pontuacao,
+    u.nome  AS responsavel
+FROM lead l
+JOIN usuario u ON u.id = l.usuario_id
+WHERE l.pontuacao > (SELECT AVG(pontuacao) FROM lead)
+ORDER BY l.pontuacao DESC;
+
+/* Todos os leads com endereço quando disponível (LEFT JOIN) */
+SELECT
+    l.nome,
+    l.status,
+    e.logradouro,
+    e.cidade
+FROM lead l
+LEFT JOIN endereco e ON e.id = l.endereco_id
+ORDER BY l.nome;
+
+/* Usuários e seus grupos */
+SELECT
+    u.nome      AS usuario,
+    g.nome      AS grupo
+FROM usuario u
+JOIN grupo g ON g.id = u.grupo_id
+ORDER BY g.nome, u.nome;
+
+/* Clientes por usuário responsável */
+SELECT
+    u.nome          AS responsavel,
+    COUNT(c.id)     AS total_clientes
+FROM usuario u
+JOIN cliente c ON c.usuario_id = u.id
+GROUP BY u.id, u.nome
+ORDER BY total_clientes DESC;
+
+/* Empresas com mais de um lead cadastrado */
+SELECT
+    empresa,
+    COUNT(*)    AS total_leads,
+    MAX(pontuacao) AS maior_pontuacao
+FROM lead
+WHERE empresa IS NOT NULL
+GROUP BY empresa
+HAVING COUNT(*) > 1
+ORDER BY total_leads DESC;

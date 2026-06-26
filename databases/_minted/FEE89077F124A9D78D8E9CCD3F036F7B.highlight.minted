@@ -1,0 +1,11 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{SELECT}
+\PYG{+w}{    }\PYG{n}{empresa}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{COUNT}\PYG{p}{(}\PYG{o}{*}\PYG{p}{)}\PYG{+w}{        }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{total\PYGZus{}leads}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{MAX}\PYG{p}{(}\PYG{n}{pontuacao}\PYG{p}{)}\PYG{+w}{  }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{maior\PYGZus{}pontuacao}
+\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{lead}
+\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{empresa}\PYG{+w}{ }\PYG{k}{IS}\PYG{+w}{ }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{NULL}
+\PYG{k}{GROUP}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{empresa}
+\PYG{k}{HAVING}\PYG{+w}{ }\PYG{k}{COUNT}\PYG{p}{(}\PYG{o}{*}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{1}
+\PYG{k}{ORDER}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{total\PYGZus{}leads}\PYG{+w}{ }\PYG{k}{DESC}\PYG{p}{;}
+\end{MintedVerbatim}

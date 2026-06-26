@@ -1,0 +1,12 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{SELECT}
+\PYG{+w}{    }\PYG{n}{l}\PYG{p}{.}\PYG{n}{nome}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{l}\PYG{p}{.}\PYG{n}{empresa}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{l}\PYG{p}{.}\PYG{n}{status}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{l}\PYG{p}{.}\PYG{n}{pontuacao}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{u}\PYG{p}{.}\PYG{n}{nome}\PYG{+w}{  }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{responsavel}
+\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{lead}\PYG{+w}{ }\PYG{n}{l}
+\PYG{k}{JOIN}\PYG{+w}{ }\PYG{n}{usuario}\PYG{+w}{ }\PYG{n}{u}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{.}\PYG{n}{id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{l}\PYG{p}{.}\PYG{n}{usuario\PYGZus{}id}
+\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{l}\PYG{p}{.}\PYG{n}{pontuacao}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{p}{(}\PYG{k}{SELECT}\PYG{+w}{ }\PYG{k}{AVG}\PYG{p}{(}\PYG{n}{pontuacao}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{lead}\PYG{p}{)}
+\PYG{k}{ORDER}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{l}\PYG{p}{.}\PYG{n}{pontuacao}\PYG{+w}{ }\PYG{k}{DESC}\PYG{p}{;}
+\end{MintedVerbatim}

@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{INSERT}\PYG{+w}{ }\PYG{k}{INTO}\PYG{+w}{ }\PYG{n}{lead}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{usuario\PYGZus{}id}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{nome}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{email}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{telefone}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{origem}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{observacoes}\PYG{p}{)}
+\PYG{k}{VALUES}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}Shadow Shock\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}shadowshock@elysee.fr\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}+33144181818\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}indicacao\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}Presidente da Franca\PYGZsq{}}\PYG{p}{);}
+\end{MintedVerbatim}

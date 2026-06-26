@@ -1,0 +1,9 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{CREATE}\PYG{+w}{ }\PYG{k}{INDEX}\PYG{+w}{ }\PYG{n}{idx\PYGZus{}usuario\PYGZus{}grupo}\PYG{+w}{       }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{usuario}\PYG{p}{(}\PYG{n}{grupo\PYGZus{}id}\PYG{p}{);}
+\PYG{k}{CREATE}\PYG{+w}{ }\PYG{k}{INDEX}\PYG{+w}{ }\PYG{n}{idx\PYGZus{}lead\PYGZus{}usuario}\PYG{+w}{        }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{lead}\PYG{p}{(}\PYG{n}{usuario\PYGZus{}id}\PYG{p}{);}
+\PYG{k}{CREATE}\PYG{+w}{ }\PYG{k}{INDEX}\PYG{+w}{ }\PYG{n}{idx\PYGZus{}lead\PYGZus{}email}\PYG{+w}{          }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{lead}\PYG{p}{(}\PYG{n}{email}\PYG{p}{);}
+\PYG{k}{CREATE}\PYG{+w}{ }\PYG{k}{INDEX}\PYG{+w}{ }\PYG{n}{idx\PYGZus{}cliente\PYGZus{}usuario}\PYG{+w}{     }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{cliente}\PYG{p}{(}\PYG{n}{usuario\PYGZus{}id}\PYG{p}{);}
+\PYG{k}{CREATE}\PYG{+w}{ }\PYG{k}{INDEX}\PYG{+w}{ }\PYG{n}{idx\PYGZus{}cliente\PYGZus{}email}\PYG{+w}{       }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{cliente}\PYG{p}{(}\PYG{n}{email}\PYG{p}{);}
+\PYG{k}{CREATE}\PYG{+w}{ }\PYG{k}{INDEX}\PYG{+w}{ }\PYG{n}{idx\PYGZus{}cliente\PYGZus{}status}\PYG{+w}{      }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{cliente}\PYG{p}{(}\PYG{n}{status}\PYG{p}{);}
+\PYG{k}{CREATE}\PYG{+w}{ }\PYG{k}{INDEX}\PYG{+w}{ }\PYG{n}{idx\PYGZus{}concorrente\PYGZus{}usuario}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{concorrente}\PYG{p}{(}\PYG{n}{usuario\PYGZus{}id}\PYG{p}{);}
+\end{MintedVerbatim}

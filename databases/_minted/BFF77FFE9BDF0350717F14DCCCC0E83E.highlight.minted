@@ -1,0 +1,9 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{SELECT}
+\PYG{+w}{    }\PYG{n}{u}\PYG{p}{.}\PYG{n}{nome}\PYG{+w}{          }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{responsavel}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{COUNT}\PYG{p}{(}\PYG{k}{c}\PYG{p}{.}\PYG{n}{id}\PYG{p}{)}\PYG{+w}{     }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{total\PYGZus{}clientes}
+\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{usuario}\PYG{+w}{ }\PYG{n}{u}
+\PYG{k}{JOIN}\PYG{+w}{ }\PYG{n}{cliente}\PYG{+w}{ }\PYG{k}{c}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{k}{c}\PYG{p}{.}\PYG{n}{usuario\PYGZus{}id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{.}\PYG{n}{id}
+\PYG{k}{GROUP}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{.}\PYG{n}{id}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{.}\PYG{n}{nome}
+\PYG{k}{ORDER}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{total\PYGZus{}clientes}\PYG{+w}{ }\PYG{k}{DESC}\PYG{p}{;}
+\end{MintedVerbatim}
